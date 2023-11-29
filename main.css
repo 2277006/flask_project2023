@@ -18,7 +18,7 @@ body {
 .v38_275 {
   width: 627px;
   height: 600px;
-  background: url("../images/v38_275.png");
+  background: url("./images/v38_275.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -35,7 +35,7 @@ body {
 .v5_1562 {
   width: 619px;
   height: 477px;
-  background: url("../images/v5_1562.png");
+  background: url("./images/v5_1562.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -236,7 +236,7 @@ body {
 .v5_1575 {
   width: 480px;
   height: 250px;
-  background: url("../images/v5_1575.png");
+  background: url("./images/v5_1575.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -266,7 +266,7 @@ body {
 .v5_1577 {
   width: 456px;
   height: 102px;
-  background: url("../images/v5_1577.png");
+  background: url("./images/v5_1577.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -280,7 +280,7 @@ body {
 .v5_1578 {
   width: 456px;
   height: 32px;
-  background: url("../images/v5_1578.png");
+  background: url("./images/v5_1578.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -308,7 +308,7 @@ body {
 .v5_1580 {
   width: 416px;
   height: 16px;
-  background: url("../images/v5_1580.png");
+  background: url("./images/v5_1580.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -510,12 +510,12 @@ body {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    text-align: center; /* 텍스트 중앙 정렬을 위한 스타일 추가 */
+    text-align: center; 
 }
 
 .navbar li {
-    display: inline-block; /* 텍스트를 가로로 나란히 배치 */
-    margin: 0 10px; /* 텍스트 간격 조정 */
+    display: inline-block; 
+    margin: 0 10px;
 }
 
 .navbar a {
