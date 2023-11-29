@@ -4,9 +4,71 @@
 <head>
 <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/css?family=Sansation+Light&display=swap" rel="stylesheet" />
-<link href="./css2/main.css" rel="stylesheet" />
+<link href="main.css" rel="stylesheet" />
 
 <title>Document</title>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+
+function showHeart() {
+ 	$.ajax({
+ 		type: 'GET',
+ 		url: './getHeart.json', // /show_heart/{{name}} 
+ 		data: {},
+ 		success: function (response){
+ 			let my_heart = response['my_heart'];
+			let interested=my_heart['interested']
+			let interested_cnt=my_heart['interested_cnt']
+ 			
+			$("#jcnt").text(interested_cnt); //찜갯수
+
+			if (interested == 'Y'){
+ 				$(".heartButton").css("background-color","red");
+ 				$("#heartButton").attr("onclick","unlike()");
+			}else{
+	 			$(".heartButton").css("background-color","grey");
+ 				$("#heartButton").attr("onclick","like()");
+			}
+ 			//alert("showheart!")
+ 
+		}
+ 	});
+}
+
+ $(document).ready(function () {
+	//showHeart();
+	init();
+
+ });
+function init(){
+	$("#jcnt").text("10"); //찜갯수
+ 	if (true){
+ 		$(".heartButton").css("background-color","red");
+ 		$("#heartButton").attr("onclick","unlike()");
+	}else{
+	 	$(".heartButton").css("background-color","grey");
+ 		$("#heartButton").attr("onclick","like()");
+	}
+}
+function like(){
+	$(".heartButton").css("background-color","red");
+	$("#heartButton").attr("onclick","unlike()");
+	var jcnt=Number($("#jcnt").text());
+	$("#jcnt").text(jcnt+1);
+}
+
+function unlike(){
+	$(".heartButton").css("background-color","grey");
+	$("#heartButton").attr("onclick","like()");
+	var jcnt=Number($("#jcnt").text());
+	if(jcnt>0){
+		$("#jcnt").text(jcnt-1);
+	}
+}
+
+
+
+</script>
 </head>
 
 <body>
@@ -55,8 +117,8 @@
 <span class="상점소개">송충이 상점 한 줄 소개</span>
 </div>
 </div>
-<span class="상품찜">찜 15
- 	<button class="heartButton">
+<span class="상품찜">찜 <span id="jcnt">15</span>
+ 	<button class="heartButton"  id="heartButton">
  		 <span class="heartIcon"></span>
 	</button>
 </span>
@@ -79,11 +141,13 @@
 </div>
 <div class="navbar">
         <ul>
-            <li><a href="#">로그인</a></li>
-            <li><a href="#">회원가입</a></li>
-            <li><a href="#">판매상품</a></li>
-            <li><a href="#">이화인증</a></li>
-            <li><a href="#">마이페이지</a></li>
+			{% if session['id'] %}
+			<li><a href="/logout"><b>{{session['id']}}님 반갑습니다!</b> logout</a></li> {% else %}
+			<li><a href="/login">로그인</a></li>
+			{% endif %}
+            <li><a href="/">판매상품</a></li>
+            <li><a href="/certification">이화인증</a></li>
+            <li><a href="/reg_items">마이페이지</a></li>
             <li><a href="#">장바구니</a></li>
         </ul>
     </div>
